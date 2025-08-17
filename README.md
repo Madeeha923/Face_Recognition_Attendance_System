@@ -1,7 +1,7 @@
-## Automated Attendance System using Real-Time Face Recognition
+# Automated Attendance System using Real-Time Face Recognition
 This project is an AI-powered application designed to automate the process of taking attendance using face recognition. It replaces manual roll calls by using a webcam to identify registered students in real-time and automatically logs their attendance into a database.
 
-# Key Features
+## Key Features
 Real-Time Face Detection: Automatically detects and locates human faces from a live webcam feed.
 
 High-Accuracy Recognition: Identifies known individuals by comparing them against a pre-encoded database of faces.
@@ -12,7 +12,7 @@ Duplicate Prevention: Ensures a student's attendance is marked only once per day
 
 
 
-🛠️ Tech Stack
+# 🛠️ Tech Stack
 Language: Python
 
 Computer Vision: OpenCV
@@ -23,8 +23,8 @@ Database: SQLite
 
 Web Framework (Optional): Flask
 
-##📂 Project Structure
-.
+# 📂 Project Structure
+ * .
 ├── New folder/                 <-- FOLDER FOR STUDENT IMAGES (Create this manually)
 │   ├── StudentName101/
 │   │   ├── image1.jpg
@@ -40,7 +40,7 @@ Web Framework (Optional): Flask
 ├── .gitignore                  # Specifies files for Git to ignore
 └── requirements.txt            # Lists all project dependencies
 
-#⚙️ How It Works
+# ⚙️ How It Works
 The system operates in three main stages:
 
 Face Encoding (faces.py): The script processes a collection of photos for each student. It uses a pre-trained deep learning model to learn the unique facial features of every individual and stores this information as a mathematical "encoding" in the encodings.pickle file.
@@ -49,7 +49,7 @@ Database Setup (database.py): This script creates an SQLite database (students.d
 
 Live Recognition (recognize_and_attend.py): The main application activates the webcam, detects faces in the video feed, and compares them against the stored encodings. Upon a successful match, it looks up the student's roll number and saves their attendance with a timestamp into the attendance.db.
 
-#🚀 Setup and Installation
+# 🚀 Setup and Installation
 Follow these steps to get the project running on your local machine.
 
 1. Clone the Repository
