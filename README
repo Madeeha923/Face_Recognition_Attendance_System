@@ -1,7 +1,7 @@
-Automated Attendance System using Real-Time Face Recognition
+## Automated Attendance System using Real-Time Face Recognition
 This project is an AI-powered application designed to automate the process of taking attendance using face recognition. It replaces manual roll calls by using a webcam to identify registered students in real-time and automatically logs their attendance into a database.
 
-📋 Key Features
+# Key Features
 Real-Time Face Detection: Automatically detects and locates human faces from a live webcam feed.
 
 High-Accuracy Recognition: Identifies known individuals by comparing them against a pre-encoded database of faces.
@@ -12,7 +12,7 @@ Duplicate Prevention: Ensures a student's attendance is marked only once per day
 
 (Optional) Web Interface: Includes a Flask-based web application to stream the live feed and view attendance records from a browser.
 
-🛠️ Tech Stack
+#🛠️ Tech Stack
 Language: Python
 
 Computer Vision: OpenCV
@@ -21,9 +21,9 @@ Face Recognition: face_recognition (built on dlib's deep learning model)
 
 Database: SQLite
 
-Web Framework (Optional): Flask
 
-📂 Project Structure
+
+#📂 Project Structure
 .
 ├── New folder/                 <-- FOLDER FOR STUDENT IMAGES (Create this manually)
 │   ├── StudentName101/
@@ -49,14 +49,14 @@ Database Setup (database.py): This script creates an SQLite database (students.d
 
 Live Recognition (recognize_and_attend.py): The main application activates the webcam, detects faces in the video feed, and compares them against the stored encodings. Upon a successful match, it looks up the student's roll number and saves their attendance with a timestamp into the attendance.db.
 
-🚀 Setup and Installation
+##🚀 Setup and Installation
 Follow these steps to get the project running on your local machine.
 
-1. Clone the Repository
+#1. Clone the Repository
 git clone [https://github.com/your-username/Your-Repo-Name.git](https://github.com/your-username/Your-Repo-Name.git)
 cd Your-Repo-Name
 
-2. Create a Virtual Environment
+#2. Create a Virtual Environment
 It's highly recommended to use a virtual environment to keep project dependencies isolated.
 
 # For Windows
