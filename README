@@ -1,39 +1,115 @@
-The ORL face database
----------------------
+Automated Attendance System using Real-Time Face Recognition
+This project is an AI-powered application designed to automate the process of taking attendance using face recognition. It replaces manual roll calls by using a webcam to identify registered students in real-time and automatically logs their attendance into a database.
 
-This directory contains a set of faces taken between April 1992 and
-April 1994 at the Olivetti Research Laboratory in Cambridge, UK.
+📋 Key Features
+Real-Time Face Detection: Automatically detects and locates human faces from a live webcam feed.
 
-There are 10 different images of 40 distinct subjects. For some of the
-subjects, the images were taken at different times, varying lighting
-slightly, facial expressions (open/closed eyes, smiling/non-smiling)
-and facial details (glasses/no-glasses).  All the images are taken
-against a dark homogeneous background and the subjects are in
-up-right, frontal position (with tolerance for some side movement).
+High-Accuracy Recognition: Identifies known individuals by comparing them against a pre-encoded database of faces.
 
-The files are in PGM format and can be conveniently viewed using the 'xv'
-program. The size of each image is 92x112, 8-bit grey levels. The images
-are organised in 40 directories (one for each subject) named as:
+Automated Attendance Logging: Records the name, roll number, and a precise timestamp for each recognized student into an SQLite database.
 
-		sX
+Duplicate Prevention: Ensures a student's attendance is marked only once per day.
 
-where X indicates the subject number (between 1 and 40). In each directory
-there are 10 different images of the selected subject named as:
+(Optional) Web Interface: Includes a Flask-based web application to stream the live feed and view attendance records from a browser.
 
-		Y.pgm
+🛠️ Tech Stack
+Language: Python
 
-where Y indicates which image for the specific subject (between 1 and 10).
+Computer Vision: OpenCV
 
-When using these images, please give credit to Olivetti Research Laboratory.
-A convenient reference is the face recognition work which uses some of
-these images:
+Face Recognition: face_recognition (built on dlib's deep learning model)
 
- F. Samaria and A. Harter 
-  "Parameterisation of a stochastic model for human face identification"
-  2nd IEEE Workshop on Applications of Computer Vision
-  December 1994, Sarasota (Florida).
+Database: SQLite
 
-The paper is available via anonymous ftp from quince.cam-orl.co.uk and is
-stored in pub/users/fs/IEEE_workshop.ps.Z
+Web Framework (Optional): Flask
 
-If you have any question, please email Ferdinando Samaria: fs@cam-orl.co.uk
+📂 Project Structure
+.
+├── New folder/                 <-- FOLDER FOR STUDENT IMAGES (Create this manually)
+│   ├── StudentName101/
+│   │   ├── image1.jpg
+│   │   └── ...
+│   └── StudentName205/
+│       ├── image1.jpg
+│       └── ...
+│
+├── faces.py                    # Script 1: Encodes faces from the image dataset
+├── database.py                 # Script 2: Creates the student information database
+├── recognize_and_attend.py     # Script 3: Main application for live recognition
+├── view_attendance.py          # Utility to view attendance logs in the terminal
+├── .gitignore                  # Specifies files for Git to ignore
+└── requirements.txt            # Lists all project dependencies
+
+⚙️ How It Works
+The system operates in three main stages:
+
+Face Encoding (faces.py): The script processes a collection of photos for each student. It uses a pre-trained deep learning model to learn the unique facial features of every individual and stores this information as a mathematical "encoding" in the encodings.pickle file.
+
+Database Setup (database.py): This script creates an SQLite database (students.db) that links each student's name to their official roll number, acting as the class roster.
+
+Live Recognition (recognize_and_attend.py): The main application activates the webcam, detects faces in the video feed, and compares them against the stored encodings. Upon a successful match, it looks up the student's roll number and saves their attendance with a timestamp into the attendance.db.
+
+🚀 Setup and Installation
+Follow these steps to get the project running on your local machine.
+
+1. Clone the Repository
+git clone [https://github.com/your-username/Your-Repo-Name.git](https://github.com/your-username/Your-Repo-Name.git)
+cd Your-Repo-Name
+
+2. Create a Virtual Environment
+It's highly recommended to use a virtual environment to keep project dependencies isolated.
+
+# For Windows
+python -m venv myvenv
+myvenv\Scripts\activate
+
+# For macOS/Linux
+python3 -m venv myvenv
+source myvenv/bin/activate
+
+3. Install Dependencies
+Install all the required Python libraries using the requirements.txt file.
+
+pip install -r requirements.txt
+
+4. Prepare the Image Dataset
+Create a folder named New folder in the main project directory.
+
+Inside New folder, create a sub-folder for each student.
+
+IMPORTANT: Name each sub-folder in the format NameRollNo (e.g., Madeeha101, John205).
+
+Place several clear, well-lit photos of each student inside their respective folder.
+
+5. Run the Initial Setup Scripts
+You must run these two scripts once to build your face database.
+
+Encode the faces:
+
+python faces.py
+
+This will create the encodings.pickle file.
+
+Set up the student database:
+
+python database.py
+
+This will create the students.db file.
+
+▶️ How to Run the Application
+Once the setup is complete, you can start the main attendance system.
+
+python recognize_and_attend.py
+
+A window will open showing your webcam feed. When a registered person is recognized, their name and roll number will be displayed, and their attendance will be marked. Press 'q' to quit the application.
+
+📊 Viewing Attendance Records
+You can view the logged attendance in two ways:
+
+Using the provided script:
+Run the view_attendance.py script to see a formatted list in your terminal.
+
+python view_attendance.py
+
+Using a Database Browser:
+Use a free tool like DB Browser for SQLite to open the attendance.db file and view the attendance_log table.
