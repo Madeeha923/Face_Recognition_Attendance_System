@@ -24,21 +24,21 @@ Database: SQLite
 Web Framework (Optional): Flask
 
 # 📂 Project Structure
- * .
-├── New folder/                 <-- FOLDER FOR STUDENT IMAGES (Create this manually)
-│   ├── StudentName101/
-│   │   ├── image1.jpg
-│   │   └── ...
-│   └── StudentName205/
-│       ├── image1.jpg
-│       └── ...
-│
-├── faces.py                    # Script 1: Encodes faces from the image dataset
-├── database.py                 # Script 2: Creates the student information database
-├── recognize_and_attend.py     # Script 3: Main application for live recognition
-├── view_attendance.py          # Utility to view attendance logs in the terminal
-├── .gitignore                  # Specifies files for Git to ignore
-└── requirements.txt            # Lists all project dependencies
+ The project consists of several key files and folders:
+
+New folder/: The directory where you must place your student image sub-folders.
+
+faces.py: Script to encode the faces from the image dataset.
+
+database.py: Script to create the student information database.
+
+recognize_and_attend.py: The main application for live recognition.
+
+view_attendance.py: A utility to view attendance logs in the terminal.
+
+.gitignore: Specifies which files for Git to ignore.
+
+requirements.txt: Lists all the project's Python dependencies.
 
 # ⚙️ How It Works
 The system operates in three main stages:
@@ -96,14 +96,14 @@ python database.py
 
 This will create the students.db file.
 
-#▶️ How to Run the Application
+# ▶️ How to Run the Application
 Once the setup is complete, you can start the main attendance system.
 
 python recognize_and_attend.py
 
 A window will open showing your webcam feed. When a registered person is recognized, their name and roll number will be displayed, and their attendance will be marked. Press 'q' to quit the application.
 
-#📊 Viewing Attendance Records
+# 📊 Viewing Attendance Records
 You can view the logged attendance in two ways:
 
 Using the provided script:
